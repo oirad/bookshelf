@@ -25,8 +25,9 @@ module.exports = function(Bookshelf) {
   var PostgreSQL = require('../bookshelf')(pg);
   var SQLite3 = require('../bookshelf')(sqlite3);
   var MsSQL = require('../bookshelf')(mssql);
-  var Swapped = require('../bookshelf')(Knex({}));
+  var Swapped = require('../bookshelf')({});
   Swapped.knex = sqlite3;
+
 
   it('should allow creating a new Bookshelf instance with "new"', function() {
     var bookshelf = new Bookshelf(sqlite3);
@@ -34,7 +35,7 @@ module.exports = function(Bookshelf) {
   });
 
   it('should allow swapping in another knex instance', function() {
-    var bookshelf = new Bookshelf(Knex({}));
+    var bookshelf = new Bookshelf({});
     var Models = require('./integration/helpers/objects')(bookshelf).Models;
     var site = new Models.Site();
 
