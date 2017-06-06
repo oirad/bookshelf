@@ -19,10 +19,12 @@ module.exports = function(Bookshelf) {
       }
     }
   });
+  var mssql = require('knex')({client: 'mssql', connection: config.mssql});
 
   var MySQL = require('../bookshelf')(mysql);
   var PostgreSQL = require('../bookshelf')(pg);
   var SQLite3 = require('../bookshelf')(sqlite3);
+  var MsSQL = require('../bookshelf')(mssql);
   var Swapped = require('../bookshelf')(Knex({}));
   Swapped.knex = sqlite3;
 
@@ -48,7 +50,7 @@ module.exports = function(Bookshelf) {
     });
   });
 
-  _.each([MySQL, PostgreSQL, SQLite3, Swapped], function(bookshelf) {
+  _.each([MySQL, PostgreSQL, SQLite3, MsSQL, Swapped], function(bookshelf) {
 
     var dialect = bookshelf.knex.client.dialect;
 

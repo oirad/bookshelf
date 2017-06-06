@@ -114,6 +114,16 @@ access on clients connecting locally. Do not use this setting in a production en
 
 After editing the `pg_hba.conf` file you'll need to restart the PostgreSQL server for the changes to take effect.
 
+#### MsSQL
+
+You can use docker to run mssql on your Linux / MacOS host using the official [image](https://hub.docker.com/r/microsoft/mssql-server-linux/).
+
+You can start the container using the credentials in the example config underneath:
+
+```
+docker run --rm -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Test123' -p 1433:1433 -d microsoft/mssql-server-linux:ctp-2.0
+```
+
 #### Using a config file
 
 If you don't want to go to the trouble of performing the changes explained in the previous two sections you can instead
@@ -145,6 +155,13 @@ module.exports = {
 
   sqlite3: {
     filename: ':memory:'
+  },
+
+  mssql: {
+    host: 'localhost',
+    user: 'SA',
+    password: 'Test123',
+    database: 'bookshelf_test'
   }
 };
 ```
