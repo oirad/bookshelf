@@ -121,7 +121,7 @@ You can use docker to run mssql on your Linux / MacOS host using the official [i
 You can start the container using the credentials in the example config underneath:
 
 ```
-docker run --rm -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Test123' -p 1433:1433 -d microsoft/mssql-server-linux:ctp-2.0
+docker run --rm -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Test1234' -p 1433:1433 -d microsoft/mssql-server-linux:ctp-2.0
 ```
 
 #### Using a config file
@@ -160,7 +160,7 @@ module.exports = {
   mssql: {
     host: 'localhost',
     user: 'SA',
-    password: 'Test123',
+    password: 'Test1234',
     database: 'bookshelf_test'
   }
 };
